@@ -1,0 +1,28 @@
+подключение к бд
+self.conn = pymysql.connect(host='localhost', port = 3306, user = 'root', password = 'root', database='Food')
+
+таблица
+self.ex_table.clear()
+        ex_list = self.db.getExpList()
+        self.ex_table.setColumnCount(2)
+        self.ex_table.setRowCount(len(ex_list))
+        self.ex_table.setHorizontalHeaderLabels(['Тип расходов', 'Расходы'])
+        for i, order in enumerate(ex_list):
+            for x, field in enumerate(order):
+                item = QTableWidgetItem()
+                item.setText(str(field))
+                item.setFlags(Qt.ItemIsEnabled)
+                self.ex_table.setItem(i, x, item)
+
+мэин
+if __name__ == '__main__':
+    qapp = QApplication(sys.argv)
+    window = Autorization()
+    window.show()
+    qapp.exec_()
+
+переход по окнам
+dialog = окно()
+dialog.show()
+dialog.exec_()
+
